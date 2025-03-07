@@ -1,0 +1,71 @@
+:root {
+  --bgcolor: #aaa;
+  --bgcolor2: #444;
+  --movex: 100;
+  --movey: 100;
+  --opacity: .3;
+  --speedx: 0.16;
+  --speedy: 0.48;
+  --s2: linear-gradient(#555, #222); /* ✅ 修正: 改為正確的背景語法 */
+}
+
+.static-noise {
+  position: absolute;
+  inset: 0;
+  background: url(https://i.ibb.co/77NfVB5/noise.png);
+  opacity: var(--opacity);
+  mix-blend-mode: multiply; /* ✅ 確保效果正常 */
+  animation: static-noise-x calc(1s * var(--speedx)) steps(2, jump-start) infinite,
+    static-noise-y calc(1s * var(--speedy)) steps(3, jump-start) infinite;
+}
+
+@keyframes static-noise-x {
+  100% {
+    background-position-x: calc(1px * var(--movex));
+  }
+}
+@keyframes static-noise-y {
+  100% {
+    background-position-y: calc(1px * var(--movey));
+  }
+}
+
+.styled-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    background: #444; /* 類似 Nothing on TV 的黑白風格 */
+    border: 2px solid #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    cursor: pointer; /* ✅ 新增: 讓按鈕更符合用戶體驗 */
+}
+
+.styled-button:hover {
+    background: #aaa;
+    color: #000;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  background: var(--s2); /* ✅ 修正: 直接使用 --s2 */
+  font-family: sans-serif;
+}
+
+body::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--s2);
+  filter: url(#dither);
+  mix-blend-mode: overlay; /* ✅ 讓 `filter` 不影響整體顏色 */
+  content: '';
+  transform: scale(1.12);
+}
