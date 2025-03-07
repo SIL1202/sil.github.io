@@ -22,3 +22,33 @@ function setCustomProp(prop, val) {
         document.documentElement.style.setProperty("--" + prop, val + "px");
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".styled-button, .home-button, .muddle-text");
+
+    buttons.forEach(button => {
+        button.setAttribute("data-text", button.innerText); // 設定 data-text
+        
+        button.addEventListener("mouseenter", () => { // 🚀 只有在 hover 時觸發！
+            muddleText(button);
+        });
+    });
+
+    function muddleText(element) {
+        let originalText = element.getAttribute("data-text");
+        let characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let iterations = 0;
+        let interval = setInterval(() => {
+            element.innerText = originalText
+                .split("")
+                .map((char, index) => {
+                    if (index < iterations) return originalText[index];
+                    return characters[Math.floor(Math.random() * characters.length)];
+                })
+                .join("");
+            
+            if (iterations >= originalText.length) clearInterval(interval);
+            iterations += 1;
+        }, 50);
+    }
+});
