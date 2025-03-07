@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nothing on TV</title>
+    <link rel="stylesheet" href="/src/styles/main.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/tweakpane@3.0.7/dist/tweakpane.min.js"></script>
+    <script defer src="/src/scripts/main.js"></script>
+</head>
+<body>
+    <div class="static-noise"></div>
+    <h1>Nothing on my mind</h1>
+    
+    <!-- 這是新增的按鈕 -->
+    <a href="/src/pages/carousel.html" class="styled-button">View Image Carousel</a>
+
+    <svg width="0" height="0" aria-hidden="true">
+        <filter id="dither" primitiveUnits="objectBoundingBox">
+            <feTurbulence type="fractalNoise" baseFrequency="4.71"></feTurbulence>
+            <feDisplacementMap in="SourceGraphic" scale=".52"></feDisplacementMap>
+            <feBlend in2="SourceGraphic"></feBlend>
+        </filter>
+    </svg>
+</body>
+</html>
