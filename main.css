@@ -6,10 +6,10 @@
   --opacity: .3;
   --speedx: 0.16;
   --speedy: 0.48;
+  --s2: #555, #222; /* ✅ 修正未定義變數 */
 }
 
 .static-noise {
-  /* display: none;*/
   position: absolute;
   inset: 0;
   background: url(https://i.ibb.co/77NfVB5/noise.png);
@@ -18,12 +18,11 @@
     static-noise-y calc(1s * var(--speedy)) steps(3, jump-start) infinite;
 }
 
-/* @supports (mix-blend-mode: overlay) {*/
-  .static-noise {
-    mix-blend-mode: multiply;
-    opacity: var(--opacity);
-  }
-/* } */
+.static-noise {
+  mix-blend-mode: multiply;
+  opacity: var(--opacity);
+}
+
 @keyframes static-noise-x {
   100% {
     background-position-x: calc(1px * var(--movex));
@@ -35,20 +34,20 @@
   }
 }
 
-
 body {
   display: grid;
   place-content: center;
   min-height: 100vh;
-  background: linear-gradient(var(--bgcolor), var(--bgcolor2)); /*var(--bgcolor);*/
+  background: linear-gradient(var(--bgcolor), var(--bgcolor2));
   font-family: sans-serif;
-  &::before {
-		position: absolute;
-		inset: 0;
-		z-index: -1;
-		background: linear-gradient(var(--s2));
-		filter: url(#dither);
-		content: '';
-    transform: scale(1.12);
-	}
+}
+
+body::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(var(--s2));
+  filter: url(#dither);
+  content: '';
+  transform: scale(1.12);
 }
