@@ -38,9 +38,10 @@
 }
 
 .styled-button {
-    display: inline-block;
+    display: block; 
     margin-top: 20px;
-    padding: 10px 15px; /* 邊距 */
+    margin: 10px auto;
+    padding: 0; /* 邊距 */
     font-size: 1.5em; /*  字體 */
     font-weight: bold;
     background: none; /*  背景 */
