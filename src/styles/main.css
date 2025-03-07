@@ -6,7 +6,6 @@
   --opacity: .3;
   --speedx: 0.16;
   --speedy: 0.48;
-  --s2: linear-gradient(#555, #222); /* ✅ 修正: 改為正確的背景語法 */
 }
 
 .static-noise {
@@ -17,6 +16,7 @@
   mix-blend-mode: multiply; /* ✅ 確保效果正常 */
   animation: static-noise-x calc(1s * var(--speedx)) steps(2, jump-start) infinite,
     static-noise-y calc(1s * var(--speedy)) steps(3, jump-start) infinite;
+  pointer-events: none;
 }
 
 @keyframes static-noise-x {
@@ -33,29 +33,29 @@
 .styled-button {
     display: inline-block;
     margin-top: 20px;
-    padding: 12px 24px;
-    font-size: 1.2em;
+    padding: 10px 15px; /* 邊距 */
+    font-size: 1.5em; /*  字體 */
     font-weight: bold;
-    color: #fff;
-    background: #444; /* 類似 Nothing on TV 的黑白風格 */
-    border: 2px solid #fff;
+    background: none; /*  背景 */
+    border: none; /*  邊框 */
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 2px;
-    transition: all 0.3s;
-    cursor: pointer; /* ✅ 新增: 讓按鈕更符合用戶體驗 */
+    transition: color 0.3s ease; /* 顏色變化 */
+    cursor: pointer;
+    text-align: center; /* 文字水平置中 */
 }
 
+/* hover 時*/
 .styled-button:hover {
-    background: #aaa;
-    color: #000;
+  color: #aaa;
 }
 
 body {
   display: grid;
   place-content: center;
   min-height: 100vh;
-  background: var(--s2); /* ✅ 修正: 直接使用 --s2 */
+  background: linear-gradient(var(--bgcolor), var(--bgcolor2));
   font-family: sans-serif;
 }
 
@@ -63,9 +63,9 @@ body::before {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--s2);
+  background: linear-gradient(var(--s2));
   filter: url(#dither);
-  mix-blend-mode: overlay; /* ✅ 讓 `filter` 不影響整體顏色 */
+  /* mix-blend-mode: multiply; /* ✅ 讓 `filter` 不影響整體顏色 */ */
   content: '';
   transform: scale(1.12);
 }
