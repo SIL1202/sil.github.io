@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Image Carousel</title>
+  <link rel="stylesheet" href="../styles/carousel.css">
+</head>
+<body>
+    <a href="index.html" class="styled-button">Back to Home</a>
+
+    <div class="carousel">
+        <div class="carousel-control-button left"><input type="radio" name="carousel-control-input"></div>
+        <div class="carousel-control-button right"><input type="radio" name="carousel-control-input" checked></div>
+        <div class="carousel-rotation-direction">
+            <ul class="carousel-item-wrapper" style="--_num-elements: 5">
+                <li class="carousel-item" style="--_index: 1; --_image-url: url('../assets/images/photo1.jpg')"><a href="#">Image 1</a></li>
+                <li class="carousel-item" style="--_index: 2; --_image-url: url('../assets/images/photo2.jpg')"><a href="#">Image 2</a></li>
+                <li class="carousel-item" style="--_index: 3; --_image-url: url('../assets/images/photo3.jpg')"><a href="#">Image 3</a></li>
+                <li class="carousel-item" style="--_index: 4; --_image-url: url('../assets/images/photo4.jpg')"><a href="#">Image 4</a></li>
+                <li class="carousel-item" style="--_index: 5; --_image-url: url('../assets/images/photo5.jpg')"><a href="#">Image 5</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
